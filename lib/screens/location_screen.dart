@@ -1,13 +1,8 @@
 import 'package:clima/styles/styles.dart';
 import 'package:clima/utilities/constants.dart';
 import 'package:flutter/material.dart';
-import 'package:geolocator/geolocator.dart';
 
 class LocationScreen extends StatefulWidget {
-  final Position location;
-
-  LocationScreen(this.location);
-
   @override
   _LocationScreenState createState() => _LocationScreenState();
 }
@@ -20,7 +15,6 @@ class _LocationScreenState extends State<LocationScreen> {
 
   @override
   Widget build(BuildContext context) {
-    print(widget.location);
     return Scaffold(
       body: Container(
         decoration: kLocationScreenBoxDecoration,

@@ -1,3 +1,5 @@
+import 'package:clima/models/location.dart';
+import 'package:clima/services/weather_service.dart';
 import 'package:flutter/material.dart';
 import 'package:geolocator/geolocator.dart';
 
@@ -9,12 +11,16 @@ class LoadingScreen extends StatefulWidget {
 }
 
 class _LoadingScreenState extends State<LoadingScreen> {
+  WeatherService service;
+
   void _getLocation() async {
-    var location = await Geolocator()
+    var position = await Geolocator()
         .getCurrentPosition(desiredAccuracy: LocationAccuracy.high);
+    service = WeatherService(Location(position));
+    service.getData();
     Navigator.push(
       context,
-      MaterialPageRoute(builder: (context) => LocationScreen(location)),
+      MaterialPageRoute(builder: (context) => LocationScreen()),
     );
   }
 

@@ -13,7 +13,8 @@ class OpenWeatherAppRequest {
     return {
       'lat': location.latitude.toString(),
       'lon': location.longitude.toString(),
-      'appid': _token
+      'appid': _token,
+      'units': 'metric'
     };
   }
 

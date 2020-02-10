@@ -1,5 +1,20 @@
 class WeatherModel {
-  String getWeatherIcon(int condition) {
+  Map<String, dynamic> weather;
+  Map<String, dynamic> main;
+  Map<String, dynamic> wind;
+  String name;
+  String temperature;
+
+  WeatherModel(dynamic weatherData) {
+    this.weather = weatherData["weather"][0];
+    this.main = weatherData["main"];
+    this.temperature = (weatherData["main"]["temp"].toInt()).toString();
+    this.wind = weatherData["wind"];
+    this.name = weatherData["name"];
+  }
+
+  String getWeatherIcon() {
+    var condition = weather["id"];
     if (condition < 300) {
       return '🌩';
     } else if (condition < 400) {
@@ -19,7 +34,8 @@ class WeatherModel {
     }
   }
 
-  String getMessage(int temp) {
+  String getMessage() {
+    var temp = int.parse(temperature);
     if (temp > 25) {
       return 'It\'s 🍦 time';
     } else if (temp > 20) {

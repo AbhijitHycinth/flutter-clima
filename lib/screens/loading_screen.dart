@@ -17,10 +17,11 @@ class _LoadingScreenState extends State<LoadingScreen> {
     var position = await Geolocator()
         .getCurrentPosition(desiredAccuracy: LocationAccuracy.high);
     service = WeatherService(Location(position));
-    service.getData();
+    var weatherData = await service.getData();
     Navigator.push(
       context,
-      MaterialPageRoute(builder: (context) => LocationScreen()),
+      MaterialPageRoute(
+          builder: (context) => LocationScreen.withWeather(weatherData)),
     );
   }
 

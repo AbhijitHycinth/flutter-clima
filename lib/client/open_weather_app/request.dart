@@ -10,11 +10,18 @@ class OpenWeatherAppRequest {
   OpenWeatherAppRequest(this.location);
 
   Map<String, String> _locationHeader() {
+    final kConstantHeaders = {
+      'appid': _token,
+      'units': 'metric',
+    };
+    if (location.city != null) {
+      return {'q': location.city, ...kConstantHeaders};
+    }
+
     return {
       'lat': location.latitude.toString(),
       'lon': location.longitude.toString(),
-      'appid': _token,
-      'units': 'metric'
+      ...kConstantHeaders
     };
   }
 

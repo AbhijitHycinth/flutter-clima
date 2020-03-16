@@ -5,7 +5,7 @@ class OpenWeatherAppRequest {
 
   final String _url = 'http://api.openweathermap.org/data/2.5/weather';
 
-  final String _token = 'd67124d4533de5ac2e7b7cc5da3712da';
+  final String _token = 'Enter your token here';
 
   OpenWeatherAppRequest(this.location);
 
